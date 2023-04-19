@@ -1,0 +1,58 @@
+body {
+  background-color: #F8CECC;
+}
+
+h1 {
+  color: #F44336;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.coin {
+  background-color: #FFE0B2;
+  border-radius: 50%;
+  border: 2px solid #F44336;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 100px;
+}
+
+.coin img {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.coin p {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.coin:hover {
+  cursor: move;
+  background-color: #FFCC80;
+}
+
+input[type="number"] {
+  font-size: 24px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 80px;
+}
+
+button[type="submit"] {
+  background-color: #F44336;
+  border: none;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #FF5722;
+  cursor: pointer;
+}

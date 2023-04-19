@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>How much money do you have?</h1>
+    <div id="coins">
+        {% for coin, count in coins.items() %}
+            <div class="coin" id="{{coin}}" draggable="true">
+                <img src="{{url_for('static', filename=coin + '.png')}}" alt="{{coin}}">
+                <p>{{count}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        {% for coin in coins.keys() %}
+            <label for="{{coin}}">{{coin}}:</label>
+            <input type="number" id="{{coin}}" name="{{coin}}" min="0" value="0">
+        {% endfor %}
+        <button type="submit">Check Answer</button>
+    </form>
+    <script type="text/javascript">
+      var coins = document.querySelectorAll('.coin');
+      var dropzone = document.querySelector('#coins');
+  
+      coins.forEach(function(coin) {
+          coin.addEventListener('dragstart', function(event) {
+              event.dataTransfer.setData('text/plain', event.target.id);
+              event.target.style.opacity = '0.5';
+          });
+  
+          coin.addEventListener('dragend', function(event) {
+              event.target.style.opacity = '1.0';
+          });
+      });
+  
+      dropzone.addEventListener('dragover', function(event) {
+          event.preventDefault();
+      });
+  
+      dropzone.addEventListener('drop', function(event) {
+          event.preventDefault();
+          var coinId = event.dataTransfer.getData('text/plain');
+          var coin = document.getElementById(coinId);
+          event.target.appendChild(coin);
+      });
+  </script>
+  
+{% endblock %}
